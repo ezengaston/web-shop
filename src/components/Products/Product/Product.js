@@ -32,7 +32,7 @@ export default function Product({ product, handleAddToCart }) {
         </div>
         <Typography
           dangerouslySetInnerHTML={{ __html: product.description }}
-          variant="h5"
+          variant="body2"
           color="textSecondary"
         />
       </CardContent>
