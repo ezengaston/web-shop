@@ -29,6 +29,24 @@ function App() {
     setCart(item.cart);
   }
 
+  async function handleUpdateCartQty(productId, quantity) {
+    const item = await commerce.cart.update(productId, { quantity });
+
+    setCart(item.cart);
+  }
+
+  async function handleRemoveFromCart(productId) {
+    const item = await commerce.cart.remove(productId);
+
+    setCart(item.cart);
+  }
+
+  async function handleEmptyCart() {
+    const item = await commerce.cart.empty();
+
+    setCart(item.cart);
+  }
+
   return (
     <Router>
       <div>
@@ -41,7 +59,18 @@ function App() {
               <Products products={products} handleAddToCart={handleAddToCart} />
             }
           ></Route>
-          <Route path="/cart" exact element={<Cart cart={cart} />}></Route>
+          <Route
+            path="/cart"
+            exact
+            element={
+              <Cart
+                cart={cart}
+                handleUpdateCartQty={handleUpdateCartQty}
+                handleRemoveFromCart={handleRemoveFromCart}
+                handleEmptyCart={handleEmptyCart}
+              />
+            }
+          ></Route>
         </Routes>
       </div>
     </Router>
