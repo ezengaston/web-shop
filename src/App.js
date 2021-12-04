@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { commerce } from "./lib/commerce";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Products, Navbar, Cart } from "./components";
+import { Products, Navbar, Cart, Checkout } from "./components";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -70,6 +70,11 @@ function App() {
                 handleEmptyCart={handleEmptyCart}
               />
             }
+          ></Route>
+          <Route
+            path="/checkout"
+            exact
+            element={<Checkout cart={cart} />}
           ></Route>
         </Routes>
       </div>
