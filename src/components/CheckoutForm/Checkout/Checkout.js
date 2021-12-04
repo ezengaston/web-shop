@@ -18,7 +18,12 @@ import Confirmation from "../Confirmation";
 
 const steps = ["Shipping address", "Payment details"];
 
-export default function Checkout({ cart }) {
+export default function Checkout({
+  cart,
+  order,
+  handleCaptureCheckout,
+  errorMessage,
+}) {
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
@@ -56,7 +61,13 @@ export default function Checkout({ cart }) {
     activeStep === 0 ? (
       <AddressForm checkoutToken={checkoutToken} next={next} />
     ) : (
-      <PaymentForm shippingData={shippingData} />
+      <PaymentForm
+        checkoutToken={checkoutToken}
+        shippingData={shippingData}
+        backStep={backStep}
+        handleCaptureCheckout={handleCaptureCheckout}
+        nextStep={nextStep}
+      />
     );
 
   return (
