@@ -16,8 +16,9 @@ export default function PaymentForm({
   shippingData,
   backStep,
   handleCaptureCheckout,
+  nextStep,
 }) {
-  async function handleSubmit(e, elements, stripe, nextStep) {
+  async function handleSubmit(e, elements, stripe) {
     e.preventDefault();
 
     if (!stripe || !elements) return;
@@ -42,7 +43,7 @@ export default function PaymentForm({
         shipping: {
           name: "Primary",
           street: shippingData.address1,
-          tows_city: shippingData.city,
+          town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
           postal_zip_code: shippingData.zip,
           country: shippingData.shippingCountry,
@@ -63,7 +64,10 @@ export default function PaymentForm({
 
   return (
     <>
-      <Review checkoutToken={checkoutToken} />
+      <Review
+        checkoutToken={checkoutToken}
+        shippingPrice={shippingData.shippingPrice}
+      />
       <Divider />
       <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
         Payment method

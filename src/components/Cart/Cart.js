@@ -36,7 +36,7 @@ export default function Cart({
           </Grid>
         ))}
       </Grid>
-      <div className={classes.detail}>
+      <div className={classes.cardDetails}>
         <Typography variant="h4">
           Subtotal: {cart.subtotal.formatted_with_symbol}
         </Typography>

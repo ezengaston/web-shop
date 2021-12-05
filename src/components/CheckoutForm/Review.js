@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
 
-export default function Review({ checkoutToken }) {
+export default function Review({ checkoutToken, shippingPrice }) {
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -20,9 +20,15 @@ export default function Review({ checkoutToken }) {
           </ListItem>
         ))}
         <ListItem style={{ padding: "10px 0" }}>
+          <ListItemText primary="Shipping cost" />
+          <Typography variant="body2">
+            {shippingPrice.formatted_with_symbol}
+          </Typography>
+        </ListItem>
+        <ListItem style={{ padding: "10px 0" }}>
           <ListItemText primary="Total" />
           <Typography varian="subtitle1" style={{ fontWeight: 700 }}>
-            {checkoutToken.live.subtotal.formatted_with_symbol}
+            {`£${checkoutToken.live.subtotal.raw + shippingPrice.raw}`}
           </Typography>
         </ListItem>
       </List>

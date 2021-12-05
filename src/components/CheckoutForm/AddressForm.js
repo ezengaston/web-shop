@@ -20,6 +20,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   const [shippingSubdivision, setShippingSubdivision] = useState("");
   const [shippingOptions, setShippingOptions] = useState([]);
   const [shippingOption, setShippingOption] = useState("");
+  const [shippingPrice, setShippingPrice] = useState("");
   const methods = useForm();
 
   const fetchShippingCountries = async (checkoutTokenId) => {
@@ -52,6 +53,7 @@ const AddressForm = ({ checkoutToken, next }) => {
 
     setShippingOptions(options);
     setShippingOption(options[0].id);
+    setShippingPrice(options[0].price);
   };
 
   useEffect(() => {
@@ -84,6 +86,7 @@ const AddressForm = ({ checkoutToken, next }) => {
               shippingCountry,
               shippingSubdivision,
               shippingOption,
+              shippingPrice,
             })
           )}
         >

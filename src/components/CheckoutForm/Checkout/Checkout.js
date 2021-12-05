@@ -5,9 +5,7 @@ import {
   Step,
   StepLabel,
   Typography,
-  CircularProgress,
-  Divider,
-  Button,
+  CssBaseline,
 } from "@material-ui/core";
 import { commerce } from "../../../lib/commerce";
 
@@ -27,7 +25,6 @@ export default function Checkout({
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
-
   const classes = useStyles();
 
   useEffect(() => {
@@ -38,7 +35,9 @@ export default function Checkout({
         });
 
         setCheckoutToken(token);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     generateToken();
@@ -72,6 +71,7 @@ export default function Checkout({
 
   return (
     <>
+      <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
@@ -86,7 +86,7 @@ export default function Checkout({
             ))}
           </Stepper>
           {activeStep === steps.length ? (
-            <Confirmation />
+            <Confirmation order={order} errorMessage={errorMessage} />
           ) : (
             checkoutToken && <Form />
           )}

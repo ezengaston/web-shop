@@ -16,7 +16,6 @@ export default function CartItem({
   handleRemoveFromCart,
 }) {
   const classes = useStyles();
-  console.log(item);
 
   return (
     <Card>
