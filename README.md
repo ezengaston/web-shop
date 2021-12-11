@@ -1,6 +1,7 @@
 # Technologies used:
 - React
 - Stripe
+- Commerce.js
 - Material UI
 
 # Getting Started with Create React App
