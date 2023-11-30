@@ -21,6 +21,8 @@ export default function Checkout({
   order,
   handleCaptureCheckout,
   errorMessage,
+  activateLoading,
+  disableLoading,
 }) {
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
@@ -29,6 +31,8 @@ export default function Checkout({
 
   useEffect(() => {
     async function generateToken() {
+      activateLoading();
+
       try {
         const token = await commerce.checkout.generateToken(cart.id, {
           type: "cart",
@@ -38,6 +42,8 @@ export default function Checkout({
       } catch (error) {
         console.log(error);
       }
+
+      disableLoading();
     }
 
     generateToken();
