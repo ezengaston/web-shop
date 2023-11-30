@@ -4,6 +4,8 @@
 - Commerce.js
 - Material UI
 
+Please note: Payments are no longer functional because Commerce.js now requires a paid plan to enable Stripe.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
